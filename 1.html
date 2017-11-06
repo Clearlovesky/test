@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="js/jquery-3.2.1.min.js"></script>
+    <title>获取验证码</title>
+    <style type="text/css">
+        input#btn{
+            color: #fff;
+            background-color: #5485e1;
+        }        
+    </style>
+</head>
+<body>
+    <input type="button" id="btn" value="获取验证码"/>
+    <script>
+        $(function () {
+            $('#btn').click(function () {
+                var count = 60;
+                var countdown = setInterval(CountDown, 1000);
+                function CountDown() {
+                    $("#btn").attr("disabled", true);
+                    $("#btn").val("重新发送("+count +")");
+                    if (count == 0) {
+                        $("#btn").val("获取验证码").removeAttr("disabled");
+                        clearInterval(countdown);
+                    }
+                    count--;
+                }
+            })
+        });
+    </script>
+</body>
+</html>
